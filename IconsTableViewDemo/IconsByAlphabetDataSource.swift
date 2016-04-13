@@ -28,6 +28,10 @@ class IconsByAlphabetDataSource {
         return iconSectionedByAlphabet.count
     }
     
+    func removeItemsAtIndexPath(indexPath:NSIndexPath){
+        iconSectionedByAlphabet[indexPath.section].removeAtIndex(indexPath.row)
+    }
+    
     private func initIconSectioned(){
         var allIcons = [Icon]()
         allIcons += winterSet()
