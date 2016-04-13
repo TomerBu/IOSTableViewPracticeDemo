@@ -31,6 +31,17 @@ class IconsByAlphabetDataSource {
     func removeItemsAtIndexPath(indexPath:NSIndexPath){
         iconSectionedByAlphabet[indexPath.section].removeAtIndex(indexPath.row)
     }
+ 
+    
+    func getItemAtIndexPath(indexPath:NSIndexPath)->Icon{
+        return iconSectionedByAlphabet[indexPath.section][indexPath.row]
+    }
+    
+    func insertItemsAtIndexPath(indexPath:NSIndexPath, icon:Icon){
+        iconSectionedByAlphabet[indexPath.section].insert(icon, atIndex: indexPath.row)
+    }
+    
+    
     
     private func initIconSectioned(){
         var allIcons = [Icon]()
