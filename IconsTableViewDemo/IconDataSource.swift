@@ -9,7 +9,18 @@
 import Foundation
 
 class IconDataSource {
-   
+    
+    //enable subscript by Int
+    subscript(index: Int) -> [Icon] {
+        get {
+            if index == 0 {
+                return iconsBySeason["Winter"]!
+            }
+            return iconsBySeason["Summer"]!
+        }
+    }
+    
+    
     var iconsBySeason = [String:[Icon]]()
     var allIcons:[Icon]
     
@@ -21,8 +32,11 @@ class IconDataSource {
         allIcons += iconsBySeason["Summer"]!
     }
     
+    var numberOfSections:Int{
+        return iconsBySeason.count
+    }
     
-   private func winterSet() -> [Icon] {
+    private func winterSet() -> [Icon] {
         var icons = [Icon]()
         icons.append(Icon(withTitle: "Ornament", subtitle: "Hang on your tree", imageName: "icons_winter_01.png"))
         icons.append(Icon(withTitle: "Candy Cane", subtitle: "Mmm, tasty", imageName: "icons_winter_02.png"))

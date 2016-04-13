@@ -8,24 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		D54F32991CBE6207006F506D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F32981CBE6207006F506D /* AppDelegate.swift */; };
-		D54F329B1CBE6207006F506D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F329A1CBE6207006F506D /* ViewController.swift */; };
+		D54F329B1CBE6207006F506D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F329A1CBE6207006F506D /* DetailsViewController.swift */; };
 		D54F329E1CBE6207006F506D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54F329C1CBE6207006F506D /* Main.storyboard */; };
 		D54F32A01CBE6207006F506D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54F329F1CBE6207006F506D /* Assets.xcassets */; };
 		D54F32A31CBE6207006F506D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54F32A11CBE6207006F506D /* LaunchScreen.storyboard */; };
 		D54F32B21CBE62D2006F506D /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F32B11CBE62D2006F506D /* Icon.swift */; };
 		D54F32B51CBE6361006F506D /* IconDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F32B41CBE6361006F506D /* IconDataSource.swift */; };
+		D54F32B71CBE6843006F506D /* IconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F32B61CBE6843006F506D /* IconsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D54F32951CBE6207006F506D /* IconsTableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IconsTableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54F32981CBE6207006F506D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D54F329A1CBE6207006F506D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D54F329A1CBE6207006F506D /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		D54F329D1CBE6207006F506D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D54F329F1CBE6207006F506D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54F32A21CBE6207006F506D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D54F32A41CBE6207006F506D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D54F32B11CBE62D2006F506D /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		D54F32B41CBE6361006F506D /* IconDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconDataSource.swift; sourceTree = "<group>"; };
+		D54F32B61CBE6843006F506D /* IconsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,8 @@
 		D54F32AA1CBE622F006F506D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D54F329A1CBE6207006F506D /* ViewController.swift */,
+				D54F329A1CBE6207006F506D /* DetailsViewController.swift */,
+				D54F32B61CBE6843006F506D /* IconsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -197,8 +200,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54F32B71CBE6843006F506D /* IconsTableViewController.swift in Sources */,
 				D54F32B21CBE62D2006F506D /* Icon.swift in Sources */,
-				D54F329B1CBE6207006F506D /* ViewController.swift in Sources */,
+				D54F329B1CBE6207006F506D /* DetailsViewController.swift in Sources */,
 				D54F32991CBE6207006F506D /* AppDelegate.swift in Sources */,
 				D54F32B51CBE6361006F506D /* IconDataSource.swift in Sources */,
 			);
