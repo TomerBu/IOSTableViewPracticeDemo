@@ -1,5 +1,5 @@
 //
-//  IconDataSource.swift
+//  IconsByAlphabetDataSource.swift
 //  IconsTableViewDemo
 //
 //  Created by Tomer Buzaglo on 13/04/2016.
@@ -8,31 +8,53 @@
 
 import UIKit
 
-class IconDataSource {
+class IconsByAlphabetDataSource {
+    var iconSectionedByAlphabet:[[Icon]]!
     
     
     //enable subscript by Int
-    subscript(indexBySeason: Int) -> [Icon] {
+    subscript(indexByLetter index: Int) -> [Icon] {
         get {
-            if indexBySeason == 0 {
-                return iconsBySeason["Winter"]!
-            }
-            return iconsBySeason["Summer"]!
+            return iconSectionedByAlphabet[index]
         }
     }
-
-    var iconsBySeason = [String:[Icon]]()
-    
     
     init(){
-        iconsBySeason["Winter"] = winterSet()
-        iconsBySeason["Summer"] = summerSet()
+
+        initIconSectioned()
     }
     
     var numberOfSections:Int{
-        return iconsBySeason.count
+        return iconSectionedByAlphabet.count
     }
- 
+    
+    private func initIconSectioned(){
+        var allIcons = [Icon]()
+        allIcons += winterSet()
+        allIcons += summerSet()
+        
+        //in english = 26 + 1(Letters in english + #)
+        let sectionCount = UILocalizedIndexedCollation.currentCollation().sectionTitles.count
+        
+        //var s:[String] = [String](count: Int, repeatedValue: <#T##String#>)
+        
+        //27 Icon Arrays
+        iconSectionedByAlphabet = [[Icon]](count: sectionCount, repeatedValue: [Icon]())
+        
+        //an array of icons
+        
+        let collation = UILocalizedIndexedCollation.currentCollation()
+        allIcons.forEach { (icon) in
+            let sectionNumber = collation.sectionForObject(icon, collationStringSelector: Selector("title"))
+            iconSectionedByAlphabet[sectionNumber].append(icon)
+        }
+        //sort all the inner arrays by name :)
+        for i in 0..<iconSectionedByAlphabet.count{
+            iconSectionedByAlphabet[i].sortInPlace(<)
+        }
+
+        //print(iconSectionedByAlphabet)
+    }
     
     private func winterSet() -> [Icon] {
         var icons = [Icon]()
@@ -63,4 +85,6 @@ class IconDataSource {
         icons.append(Icon(withTitle: "Ice Cream", subtitle: "A summer treat", imageName: "summericons_100px_10.png"))
         return icons
     }
+
+
 }

@@ -24,6 +24,10 @@ class Icon: NSObject, Comparable {
             }
         }
     }
+    
+    override var description: String {
+        return "\(title), \(subtitle), \(rating)"
+    }
 }
 
 func < (lhs: Icon, rhs: Icon) -> Bool {
@@ -35,6 +39,10 @@ func == (lhs: Icon, rhs: Icon) -> Bool {
 }
 
 //Icon Rating
-enum RatingType : Int {
-    case Unrated, Nice, Great, Awsome
+enum RatingType : Int, CustomStringConvertible {
+    case Unrated = 0, Nice = 6, Great = 9, Awsome = 10
+    
+    var description: String {
+        return rawValue.description
+    }
 }

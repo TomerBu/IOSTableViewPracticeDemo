@@ -15,6 +15,7 @@
 		D54F32B21CBE62D2006F506D /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F32B11CBE62D2006F506D /* Icon.swift */; };
 		D54F32B51CBE6361006F506D /* IconDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F32B41CBE6361006F506D /* IconDataSource.swift */; };
 		D54F32B71CBE6843006F506D /* IconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F32B61CBE6843006F506D /* IconsTableViewController.swift */; };
+		D54F32B91CBE7189006F506D /* IconsByAlphabetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F32B81CBE7189006F506D /* IconsByAlphabetDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D54F32B11CBE62D2006F506D /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		D54F32B41CBE6361006F506D /* IconDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconDataSource.swift; sourceTree = "<group>"; };
 		D54F32B61CBE6843006F506D /* IconsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsTableViewController.swift; sourceTree = "<group>"; };
+		D54F32B81CBE7189006F506D /* IconsByAlphabetDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsByAlphabetDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				D54F32B41CBE6361006F506D /* IconDataSource.swift */,
+				D54F32B81CBE7189006F506D /* IconsByAlphabetDataSource.swift */,
 			);
 			name = DataSources;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D54F32B71CBE6843006F506D /* IconsTableViewController.swift in Sources */,
+				D54F32B91CBE7189006F506D /* IconsByAlphabetDataSource.swift in Sources */,
 				D54F32B21CBE62D2006F506D /* Icon.swift in Sources */,
 				D54F329B1CBE6207006F506D /* DetailsViewController.swift in Sources */,
 				D54F32991CBE6207006F506D /* AppDelegate.swift in Sources */,

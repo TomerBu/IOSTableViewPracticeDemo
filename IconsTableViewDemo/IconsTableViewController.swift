@@ -9,7 +9,7 @@
 import UIKit
 
 class IconsTableViewController: UITableViewController {
-    var dataSource = IconDataSource()
+    var dataSource = IconsByAlphabetDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class IconsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataSource[section].count
+        return dataSource[indexByLetter: section].count
     }
 
     
@@ -43,7 +43,7 @@ class IconsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("IconCellReuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
-        let icon = dataSource[indexPath.section][indexPath.row]
+        let icon = dataSource[indexByLetter: indexPath.section][indexPath.row]
         cell.imageView?.image = icon.image
         cell.textLabel?.text = icon.title
         cell.detailTextLabel?.text = icon.subtitle
@@ -52,6 +52,39 @@ class IconsTableViewController: UITableViewController {
     }
      
 
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        return UILocalizedIndexedCollation.currentCollation().sectionTitles
+    }
+    
+    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        
+        var idx = index
+        for i in idx..<dataSource.iconSectionedByAlphabet.count{
+            if dataSource.iconSectionedByAlphabet[i].count > 0{
+                idx = i
+                break
+            }
+        }
+        
+        if dataSource.iconSectionedByAlphabet[idx].count > 0{
+            
+            let path = NSIndexPath(forRow: 0, inSection: idx)
+            UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 12, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                tableView.scrollToRowAtIndexPath(path, atScrollPosition: UITableViewScrollPosition.Middle, animated: false)
+                }, completion: nil)
+            
+        }
+        return idx
+    }
+    
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionTitles = UILocalizedIndexedCollation.currentCollation().sectionTitles
+        
+        return sectionTitles[section]
+        
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
