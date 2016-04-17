@@ -3,27 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Details View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="DetailsViewController" customModule="IconsTableViewDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1053" y="1296"/>
-        </scene>
         <!--Icons Table View Controller-->
         <scene sceneID="DxX-br-Hl9">
             <objects>
@@ -65,10 +47,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="KSP-g1-B31"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="g54-hr-vdI" kind="show" identifier="MasterToDetail" id="ENM-kZ-MzR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6e-5g-Wym" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696" y="1296"/>
+            <point key="canvasLocation" x="830" y="1290"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V7q-Rk-i6b">
@@ -89,5 +74,85 @@
             </objects>
             <point key="canvasLocation" x="321" y="1296"/>
         </scene>
+        <!--Details View Controller-->
+        <scene sceneID="qqc-GF-XnG">
+            <objects>
+                <viewController id="g54-hr-vdI" customClass="DetailsViewController" customModule="IconsTableViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9ic-dA-A6K"/>
+                        <viewControllerLayoutGuide type="bottom" id="ES9-b6-1BH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jWP-Jp-SbF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons_winter_01" translatesAutoresizingMaskIntoConstraints="NO" id="2Kj-iO-gQs">
+                                <rect key="frame" x="110" y="190" width="100" height="100"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3cr-8u-y6u" appends="YES" id="paM-me-Fjm"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUj-py-gyg">
+                                <rect key="frame" x="16" y="447" width="68" height="25"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="P4d-EA-HCd" appends="YES" id="GI7-Vm-NxD"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="435-uu-Opx">
+                                <rect key="frame" x="16" y="72" width="68" height="25"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6NT-iN-Cw2" appends="YES" id="wmc-in-o2L"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.84355122059999998" blue="0.37689424700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ES9-b6-1BH" firstAttribute="top" secondItem="fUj-py-gyg" secondAttribute="bottom" constant="8" id="6Zg-io-l3R"/>
+                            <constraint firstItem="435-uu-Opx" firstAttribute="top" secondItem="9ic-dA-A6K" secondAttribute="bottom" constant="8" id="EXD-DJ-YHo"/>
+                            <constraint firstItem="435-uu-Opx" firstAttribute="leading" secondItem="jWP-Jp-SbF" secondAttribute="leadingMargin" id="Mu3-8r-3CS"/>
+                            <constraint firstItem="2Kj-iO-gQs" firstAttribute="centerX" secondItem="jWP-Jp-SbF" secondAttribute="centerX" id="Yrs-6i-Rfw"/>
+                            <constraint firstItem="2Kj-iO-gQs" firstAttribute="centerY" secondItem="jWP-Jp-SbF" secondAttribute="centerY" id="tAp-zt-TVs"/>
+                            <constraint firstItem="fUj-py-gyg" firstAttribute="leading" secondItem="jWP-Jp-SbF" secondAttribute="leadingMargin" id="tb1-OC-OHp"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="2Kj-iO-gQs" id="CRB-2M-Lai"/>
+                        <outlet property="labelTopConstraint" destination="EXD-DJ-YHo" id="8A8-nd-cSR"/>
+                        <outlet property="subtitleLabel" destination="fUj-py-gyg" id="rCO-23-m4E"/>
+                        <outlet property="titleLabel" destination="435-uu-Opx" id="RbB-vA-DdO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OXl-L9-WXk" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6NT-iN-Cw2">
+                    <connections>
+                        <action selector="tapped:" destination="g54-hr-vdI" id="OsT-bB-beu"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3cr-8u-y6u">
+                    <connections>
+                        <action selector="tapped:" destination="g54-hr-vdI" id="k1T-fv-daQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="P4d-EA-HCd">
+                    <connections>
+                        <action selector="tapped:" destination="g54-hr-vdI" id="CqS-oQ-eUo"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1243" y="1290"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="icons_winter_01" width="100" height="100"/>
+    </resources>
 </document>
