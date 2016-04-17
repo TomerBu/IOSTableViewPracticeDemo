@@ -10,17 +10,27 @@ import UIKit
 
 class IconsTableViewController: UITableViewController {
     var dataSource = IconsByAlphabetDataSource()
+    //MARK: Properties
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredData = [[Icon]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addSearch()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func addSearch(){
+        //UISearchResultsUpdating (Delegation)
+        searchController.searchResultsUpdater = self
+        tableView.tableHeaderView = searchController.searchBar
+        //prevent the dimming (and fix! behaviour of search field)
+        searchController.dimsBackgroundDuringPresentation = false
+        //close the search bar when moving to the next screen
+        definesPresentationContext = true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,12 +39,13 @@ class IconsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return dataSource.numberOfSections
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        if searchController.active{
+            return filteredData[section].count
+        }
         return dataSource[indexByLetter: section].count
     }
     
@@ -43,7 +54,13 @@ class IconsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("IconCellReuseIdentifier", forIndexPath: indexPath)
         
         // Configure the cell...
-        let icon = dataSource[indexByLetter: indexPath.section][indexPath.row]
+        let icon:Icon
+        
+        if searchController.active {
+            icon = filteredData[indexPath.section][indexPath.row]
+        }else{
+            icon = dataSource[indexByLetter: indexPath.section][indexPath.row]
+        }
         cell.imageView?.image = icon.image
         cell.textLabel?.text = icon.title
         cell.detailTextLabel?.text = icon.subtitle
@@ -137,7 +154,13 @@ class IconsTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let icon = dataSource.getItemAtIndexPath(indexPath)
+        let icon:Icon
+        if searchController.active{
+            icon = filteredData[indexPath.section][indexPath.row]
+        }
+        else{
+            icon = dataSource.getItemAtIndexPath(indexPath)
+        }
         performSegueWithIdentifier("MasterToDetail", sender: icon)
     }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -149,4 +172,27 @@ class IconsTableViewController: UITableViewController {
         }
     }
     
+}
+
+
+extension IconsTableViewController : UISearchResultsUpdating{
+    func updateSearchResultsForSearchController(searchController: UISearchController){
+        let query = searchController.searchBar.text
+        search(query ?? "")
+    }
+    
+    func search(query: String) {
+        
+        //copy
+        filteredData = dataSource.iconSectionedByAlphabet
+        if query == "" { tableView.reloadData(); return }
+        
+        //filter
+        for i in 0..<filteredData.count{
+            filteredData[i] = filteredData[i].filter({ (icon) -> Bool in
+                return icon.title.lowercaseString.containsString(query.lowercaseString)
+            })
+        }//reload
+        tableView.reloadData()
+    }
 }
